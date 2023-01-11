@@ -1,12 +1,6 @@
 using DatingApp.Data;
 using DatingApp.Extensions;
-using DatingApp.Interfaces;
-using DatingApp.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using DatingApp.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,10 +16,7 @@ builder.Services.AddIdentityServices(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 
