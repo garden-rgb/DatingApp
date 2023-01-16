@@ -28,7 +28,6 @@ app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http
 app.UseAuthentication();
 
 app.UseAuthorization();
-
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
